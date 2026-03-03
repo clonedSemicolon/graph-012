@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install . && pip install -r requirements_dev.txt && pip install pytest pymongo fastrq
+          pip install . && pip install -r requirements_dev.txt && pip install pytest
 
       - name: Test with pytest
         run: |
