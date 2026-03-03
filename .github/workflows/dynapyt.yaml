@@ -14,23 +14,20 @@ jobs:
         with:
           python-version: "3.8"
       
-      - name: Install dependencies
-        run: |
-          pip install . && pip install -r requirements_dev.txt && pip install pytest
-      
-      # CINTENT >> INSERT_CINTENT
       - uses: JavidDitty/setup-dynapyt@main
         with:
           dynapyt-version: "0.1.0"
           entry: "run_all_tests.py"
-          instrument-directory: "tests/"
-          
+
+      - name: Install dependencies
+        run: |
+          pip install . && pip install -r requirements_dev.txt && pip install pytest
+
       - name: Test with pytest
         run: |
-          python run_all_tests.py
+          python -m dynapyt.run_analysis --entry tests/ --analysis TraceAll
 
-      # CINTENT >> INSERT_CINTENT
-      - name: Upload CIntent Artifacts
+      - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
