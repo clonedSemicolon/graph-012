@@ -27,6 +27,7 @@ jobs:
           
       - name: Test with pytest
         run: |
+          pip install pytest
           python run_all_tests.py
 
       # CINTENT >> INSERT_CINTENT
