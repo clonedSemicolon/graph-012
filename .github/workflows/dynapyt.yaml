@@ -27,7 +27,6 @@ jobs:
         run: |
           echo 'import pytest; pytest.main(["--import-mode=importlib", "tests/"])' > run_tests_dynapyt.py
           python -m dynapyt.run_analysis --entry run_tests_dynapyt.py --analysis CallGraph
-          ls -l dynapyt.json
 
       - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
