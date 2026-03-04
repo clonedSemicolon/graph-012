@@ -39,4 +39,4 @@ jobs:
         if: always()
         with:
           name: ${{ env.DYNAPYT_ARTIFACT_NAME }}
-          path: ${{ github.workspace }}/output.log
+          path: /home/runner/work/graph-012/graph-012/output.log
