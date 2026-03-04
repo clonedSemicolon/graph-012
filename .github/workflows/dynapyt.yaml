@@ -20,13 +20,13 @@ jobs:
 
       - name: Instrument the Repository
         run: |
-          python -m pip install pytest pytest-xdist libcst dynapyt==0.1.0
+          python -m pip install pytest libcst dynapyt==0.1.0
           python -m dynapyt.run_instrumentation --directory tests/ --analysis TraceAll
-          ls -l tests/
 
       - name: Run the Analysis
         run: |
-          python -m dynapyt.run_analysis --entry run_all_tests.py --analysis TraceAll
+          echo 'import pytest; pytest.main(["--import-mode=importlib", "tests/"])' > run_tests_dynapyt.py
+          python -m dynapyt.run_analysis --entry run_tests_dynapyt.py --analysis TraceAll
           ls -l output.log
 
       - name: Upload Dynapyt Artifacts
