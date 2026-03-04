@@ -25,7 +25,7 @@ jobs:
 
       - name: Run the Analysis
         run: |
-          echo 'import pytest; pytest.main(["--import-mode=importlib", "tests/"])' > run_tests_dynapyt.py
+          echo -e 'import pytest\npytest.main(["--import-mode=importlib", "tests/"])\nimport dynapyt.runtime as rt\nrt.analysis.end_execution()' > run_tests_dynapyt.py
           python -m dynapyt.run_analysis --entry run_tests_dynapyt.py --analysis CallGraph
 
       - name: Upload Dynapyt Artifacts
