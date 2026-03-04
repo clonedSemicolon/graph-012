@@ -32,7 +32,7 @@ jobs:
 
       - name: Get Paths
         run: |
-          find / -name "output.log"
+          sudo find / -name "output.log"
 
       - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
