@@ -21,17 +21,17 @@ jobs:
       - name: Instrument the Repository
         run: |
           python -m pip install pytest libcst dynapyt==0.1.0
-          python -m dynapyt.run_instrumentation --directory tests/ --analysis TraceAll
+          python -m dynapyt.run_instrumentation --directory tests/ --analysis CallGraph
 
       - name: Run the Analysis
         run: |
           echo 'import pytest; pytest.main(["--import-mode=importlib", "tests/"])' > run_tests_dynapyt.py
-          python -m dynapyt.run_analysis --entry run_tests_dynapyt.py --analysis TraceAll
-          ls -l output.log
+          python -m dynapyt.run_analysis --entry run_tests_dynapyt.py --analysis CallGraph
+          ls -l dynapyt.json
 
       - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: "output.log"
-          path: "/home/runner/work/graph-012/graph-012/output.log"
+          name: dynapyt-callgraph
+          path: /home/runner/work/graph-012/graph-012/dynapyt.json
