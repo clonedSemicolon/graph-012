@@ -65,6 +65,8 @@ class BasicSpiderTestCase(BaseTestCase):
         self.assertEqual(bot.stat.counters["spider:request-network"], 2)
 
     def test_task_limit(self) -> None:
+        print('========== INSIDE "test_task_limit" ==========')
+        
         class CustomSimpleSpider(SimpleSpider):
             pass
             # def create_grab_instance(self, **kwargs):
