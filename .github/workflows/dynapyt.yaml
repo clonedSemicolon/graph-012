@@ -27,16 +27,11 @@ jobs:
       - name: Run the Analysis
         run: |
           python -m dynapyt.run_analysis --entry run_all_tests.py --analysis TraceAll
-          ls -l
-          cat output.log
-
-      - name: Get Paths
-        run: |
-          sudo find / -name "output.log"
+          ls -l output.log
 
       - name: Upload Dynapyt Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ${{ env.DYNAPYT_ARTIFACT_NAME }}
-          path: /home/runner/work/graph-012/graph-012/output.log
+          name: "output.log"
+          path: "/home/runner/work/graph-012/graph-012/output.log"
