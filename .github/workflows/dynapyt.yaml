@@ -23,6 +23,12 @@ jobs:
           python -m pip install pytest libcst git+https://github.com/sola-st/DynaPyt.git
           python -m dynapyt.run_instrumentation --directory tests/ --analysis dynapyt.analyses.CallGraph.CallGraph
 
+      - name: Fix CallGraph logging
+        run: |
+          # Patch CallGraph to use force=True so logging.basicConfig works even after pytest configures logging
+          CALLGRAPH=$(python -c "import dynapyt.analyses.CallGraph; print(dynapyt.analyses.CallGraph.__file__)")
+          sed -i 's/logging.basicConfig(/logging.basicConfig(force=True, /' "$CALLGRAPH"
+
       - name: Run the Analysis
         run: |
           echo 'import pytest; pytest.main(["--import-mode=importlib", "tests/"])' > run_tests_dynapyt.py
