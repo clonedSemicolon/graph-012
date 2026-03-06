@@ -21,7 +21,7 @@ jobs:
       - name: Instrument the Repository
         run: |
           python -m pip install pytest libcst git+https://github.com/sola-st/DynaPyt.git
-          python -m dynapyt.run_instrumentation --directory tests/ --analysis dynapyt.analyses.CallGraph.CallGraph
+          python -m dynapyt.run_instrumentation --directory grab/ --analysis dynapyt.analyses.CallGraph.CallGraph
 
       - name: Fix CallGraph logging
         run: |
