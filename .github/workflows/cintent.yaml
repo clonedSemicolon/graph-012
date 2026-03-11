@@ -19,7 +19,7 @@ jobs:
           pip install . && pip install -r requirements_dev.txt && pip install pytest
       
       # CINTENT >> INSERT_CINTENT
-      - uses: JavidDitty/setup-cintent@3638849e94bdb037f0a405375686a8550e6df904
+      - uses: clonedSemicolon/cintent_v3@v1
         with:
           nonblocking: true
           
