@@ -21,7 +21,7 @@ jobs:
       # CINTENT >> INSERT_CINTENT
       - uses: clonedSemicolon/setup-cintent@main
         with:
-          sample_rate: "1000"
+          profiler: "uprobe"
           
       - name: Test with pytest
         run: |
