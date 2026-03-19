@@ -19,9 +19,7 @@ jobs:
           pip install . && pip install -r requirements_dev.txt && pip install pytest
       
       # CINTENT >> INSERT_CINTENT
-      - uses: clonedSemicolon/cintent_v3@v1
-        with:
-          nonblocking: true
+      - uses: clonedSemicolon/setup-cintent@main
           
       - name: Test with pytest
         run: |
