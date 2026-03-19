@@ -21,13 +21,11 @@ jobs:
       # CINTENT >> INSERT_CINTENT
       - uses: clonedSemicolon/setup-cintent@main
         with:
-         profiler: perf
-         sample_rate: "500"
+         profiler: uprobe
           
       - name: Test with pytest
         run: |
           python -m pytest --import-mode=importlib "tests/"
-
       # CINTENT >> INSERT_CINTENT
       - name: Upload CIntent Artifacts
         uses: actions/upload-artifact@v4
