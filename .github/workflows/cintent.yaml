@@ -20,8 +20,6 @@ jobs:
       
       # CINTENT >> INSERT_CINTENT
       - uses: clonedSemicolon/setup-cintent@main
-        with:
-         profiler: uprobe
           
       - name: Test with pytest
         run: |
